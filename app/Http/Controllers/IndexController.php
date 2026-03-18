@@ -24,7 +24,7 @@ class IndexController extends Controller
         $HomeStats = ViewerHomeHeroStats::all();
 
 
-        return $this->renderViewerPage('viewer.Homepage', 'Home',[
+        return $this->renderViewerPage('Viewer.Homepage', 'Home',[
             'HomeHeroData'=>$HomeHero,
             'HomeFeaturesData'=>$HomeFeatures,
             'HomeCTAData'=>$HomeCTA,
