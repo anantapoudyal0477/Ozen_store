@@ -24,7 +24,7 @@
 
     </style>
 
-    @stack('styles')
+
 </head>
 
 <body class="min-h-screen flex flex-col antialiased">
