@@ -37,7 +37,7 @@
     <!-- Main Content -->
     <main id="main-content" class="flex-grow relative fade-in z-0">
         <div id="messageBox">
-            @include('Viewer.components.messages.index')
+            @include('Viewer.Components.Messages.index')
         </div>
         @yield('content')
     </main>
