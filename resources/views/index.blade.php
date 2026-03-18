@@ -31,19 +31,19 @@
 
     <!-- Navigation -->
     <header class="sticky top-0 z-50 shadow-md bg-white dark:bg-gray-900">
-        @include('viewer.Navigation.index', ['NavigationData' => $NavigationData ?? [], 'CompanyBrandData' => $CompanyBrandData ?? []])
+        @include('Viewer.Navigation.index', ['NavigationData' => $NavigationData ?? [], 'CompanyBrandData' => $CompanyBrandData ?? []])
     </header>
 
     <!-- Main Content -->
     <main id="main-content" class="flex-grow relative fade-in z-0">
         <div id="messageBox">
-            @include('viewer.components.messages.index')
+            @include('Viewer.components.messages.index')
         </div>
         @yield('content')
     </main>
     <!-- Footer -->
     <footer class="mt-auto bg-gray-100 dark:bg-gray-900">
-        @include('viewer.Footer.index', ['FooterData' => $FooterData ?? []])
+        @include('Viewer.Footer.index', ['FooterData' => $FooterData ?? []])
     </footer>
 
 
