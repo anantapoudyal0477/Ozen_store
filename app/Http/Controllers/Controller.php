@@ -139,7 +139,7 @@ abstract class Controller
     } catch (\Exception $e) {
         Log::error("Error rendering viewer page '{$view}': " . $e->getMessage());
 
-        return response()->view('Error.errorpage', [
+        return response()->view('Error.Errorpage', [
             'message' => 'Sorry, something went wrong while loading this page.'
         ], 500);
     }
@@ -172,7 +172,7 @@ abstract class Controller
         } catch (\Exception $e) {
             Log::error("Error rendering Error page '{$view}': " . $e->getMessage());
 
-            return response()->view('error.errorpage', [
+            return response()->view('Error.Errorpage', [
                 'message' => 'Sorry, something went wrong while loading this page.'
             ], 500);
         }
@@ -273,7 +273,7 @@ protected function renderAdminViewPage(string $view, string $title, array $addit
     } catch (\Exception $e) {
         Log::error("Error rendering admin view '{$view}': " . $e->getMessage());
 
-        return response()->view('error.administrator.errorpage', [
+        return response()->view('Error.Administrator.ErrorPage', [
             'message' => 'Sorry, something went wrong while loading this page.'
         ], 500);
     }
