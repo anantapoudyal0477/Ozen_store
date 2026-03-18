@@ -1,0 +1,48 @@
+[
+    {
+        "cart_id": "bb1252df-63ea-4a83-a7c2-ee09da2382a7",
+        "product_id": 1,
+        "name": "Classic Aviator Sunglasses",
+        "qty": 1,
+        "total": 120,
+        "type": "regular",
+        "prescription_details": null
+    },
+    {
+        "cart_id": "7c18417e-42f0-4c31-a26e-f05fb114a186",
+        "product_id": 2,
+        "name": "Classic Aviator Sunglasses",
+        "qty": 2,
+        "total": 240,
+        "type": "regular",
+        "prescription_details": null
+    },
+    {
+        "cart_id": "89606e9e-9355-4553-99b4-ad04efeb782d",
+        "product_id": 3,
+        "name": "Retro Round Glasses",
+        "qty": 3,
+        "total": 255,
+        "type": "regular",
+        "prescription_details": null
+    },
+    {
+        "cart_id": "1882925a-4980-4cb4-b1c5-d9a8cea0fc9d",
+        "product_id": 5,
+        "name": "Elegant Cat-Eye Glasses",
+        "qty": 10,
+        "total": 1100,
+        "type": "prescription",
+        "prescription_details": [
+            { "left_sphere": "1" },
+            { "right_sphere": "1" },
+            { "left_cylinder": "1" },
+            { "right_cylinder": "1" },
+            { "left_axis": "1" },
+            { "right_axis": "11" },
+            { "pd": "11" }
+        ]
+    }
+]
+
+
