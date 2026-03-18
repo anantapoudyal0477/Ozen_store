@@ -31,9 +31,9 @@ class CategoriesSeeder extends Seeder
         foreach ($categories as $category) {
             Categories::create(['name' => $category]);
         }
-        foreach($subcategories as $scategories){
-            SubCategory::create(['name'=>$scategories]);
-        }
+        // foreach($subcategories as $scategories){
+        //     SubCategory::create(['name'=>$scategories]);
+        // }
          foreach ($glasses_types as $type) {
             ProductTypes::create(['name' => $type]);
         }
