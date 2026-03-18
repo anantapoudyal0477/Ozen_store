@@ -133,7 +133,7 @@ abstract class Controller
             'socials' => $socials,
             'links' => $links,
         ], $additionalData);
-
+dd($viewData);
         return view($view, $viewData);
 
     } catch (\Exception $e) {
