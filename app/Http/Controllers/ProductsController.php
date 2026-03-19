@@ -76,7 +76,7 @@ public function show(string $id)
 
         // Use renderViewerPage to safely render the view with common data
         return $this->renderViewerPage(
-            'viewer.products.show',       // Blade view
+            'Viewer.Products.show',       // Blade view
             $productData->product_name,   // Page title
             ['productData' => $productData] // Additional data passed to the view
         );
@@ -84,7 +84,7 @@ public function show(string $id)
     } catch (\Exception $e) {
         Log::error("Error loading product with ID {$id}: " . $e->getMessage());
 
-        return response()->view('Errorpage', [
+        return response()->view('Error.Errorpage', [
             'message' => 'Sorry, we are unable to load this product at the moment.'
         ], 500);
     }
