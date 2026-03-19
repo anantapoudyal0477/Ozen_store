@@ -40,7 +40,7 @@ public function index($order_no)
     }
 
     $paymentPayload = [
-        'return_url'         => route('User.Payment.index', $order->order_number),
+        'return_url'         => route('User.payment.index', $order->order_number),
         'website_url'        => config('app.url'),
         'amount'             => $order->total_price,
         'purchase_order_id'  => $order->order_number,
