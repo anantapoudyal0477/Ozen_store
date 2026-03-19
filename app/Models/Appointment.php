@@ -13,7 +13,11 @@ class Appointment extends Model
      protected $fillable = [
         'user_id',
         'doctor_id',
+<<<<<<< HEAD
       
+=======
+        
+>>>>>>> f368c7e (fix appointment migration file)
         'appointment_date',
         'message',
         'status',
