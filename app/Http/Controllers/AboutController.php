@@ -17,7 +17,7 @@ class AboutController extends Controller
    public function index()
 {
     $aboutData = About::all();
-    return $this->renderViewerPage('viewer.about.index', 'About Us', ['aboutData' => $aboutData]);
+    return $this->renderViewerPage('Viewer.About.index', 'About Us', ['aboutData' => $aboutData]);
 }
 
 
