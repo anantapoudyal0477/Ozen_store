@@ -40,30 +40,44 @@ public function store(Request $request)
 {
     $userId = Auth::guard('users')->id();
     $cartItems = json_decode($request->cart_items, true);
-    
+
     if (empty($cartItems)) {
         return response()->json([
             'success' => false,
             'message' => 'Cart is empty'
         ], 400);
     }
-    
-    // Get user details from user_details table
+
+    // ✅ Merge duplicate products
+    $cartItems = collect($cartItems)
+        ->groupBy('product_id')
+        ->map(function ($items) {
+            $first = $items->first();
+
+            return [
+                'product_id' => $first['product_id'],
+                'qty' => $items->sum('qty'),
+                'total' => $items->sum('total'),
+                'prescription_details' => $first['prescription_details'] ?? null
+            ];
+        })
+        ->values()
+        ->toArray();
+
     $userDetail = UserDetail::where('user_id', $userId)->first();
+
     if (!$userDetail) {
         return response()->json([
             'success' => false,
-            'message' => 'User details not found. Please update your profile.'
+            'message' => 'User details not found.'
         ], 422);
     }
-    
+
     DB::beginTransaction();
 
     try {
-       $orderNumber = 'ORD-' . now()->format('Ymd-His') . '-' . strtoupper(uniqid());
+        $orderNumber = 'ORD-' . now()->format('Ymd-His') . '-' . strtoupper(uniqid());
 
-
-        // 1️⃣ Create Order (PENDING)
         $order = Order::create([
             'user_id' => $userId,
             'order_number' => $orderNumber,
@@ -76,67 +90,86 @@ public function store(Request $request)
         $totalQty = 0;
 
         foreach ($cartItems as $item) {
-            // Product validation
-            $product = Products::where('id', $item['product_id'])->lockForUpdate()->first();
-            if (!$product) throw new \Exception("Product not found (ID: {$item['product_id']})");
-            if ($item['qty'] <= 0) throw new \Exception("Invalid quantity for {$product->product_name}");
-            if ($product->product_stock < $item['qty']) throw new \Exception("Insufficient stock for {$product->product_name}");
 
-            // Price check
-            $backendItemTotal = $product->product_price * $item['qty'];
-            if ((float)$item['total'] !== (float)$backendItemTotal) throw new \Exception("Price mismatch for {$product->product_name}");
+            $product = Products::where('id', $item['product_id'])
+                ->lockForUpdate()
+                ->first();
 
-            // Create OrderItem
-            $orderItem = OrderItem::create([
+            if (!$product) throw new \Exception("Product not found");
+            if ($item['qty'] <= 0) throw new \Exception("Invalid quantity");
+            if ($product->product_stock < $item['qty']) throw new \Exception("Insufficient stock");
+
+            $backendTotal = $product->product_price * $item['qty'];
+
+            if ((float)$item['total'] !== (float)$backendTotal) {
+                throw new \Exception("Price mismatch");
+            }
+
+            // ✅ Create order item
+            OrderItem::create([
                 'order_id' => $order->id,
                 'product_id' => $product->id,
                 'quantity' => $item['qty'],
                 'isPrescription' => !empty($item['prescription_details']),
             ]);
 
-            // Deduct stock
             $product->decrement('product_stock', $item['qty']);
 
-            $grandTotal += $backendItemTotal;
+            $grandTotal += $backendTotal;
             $totalQty += $item['qty'];
 
-            // Handle prescription
+            // ✅ Handle prescription
             if (!empty($item['prescription_details'])) {
+
                 $data = [];
-                foreach ($item['prescription_details'] as $row) $data = array_merge($data, $row);
+                foreach ($item['prescription_details'] as $row) {
+                    $data = array_merge($data, $row);
+                }
 
-                $prescription = prescriptions::create([
-                    'order_id' => $order->id,
-                    'product_id' => $product->id,
-                    'user_id' => $userId,
-                    'pd' => $data['pd'] ?? null,
-                ]);
+                // ✅ FIX: prevent duplicate prescription
+                $prescription = prescriptions::updateOrCreate(
+                    [
+                        'order_id' => $order->id,
+                        'product_id' => $product->id,
+                        'user_id' => $userId,
+                    ],
+                    [
+                        'pd' => $data['pd'] ?? null,
+                    ]
+                );
 
-                PrescriptionGlasses::create([
-                    'prescription_id' => $prescription->id,
-                    'eye' => 'left',
-                    'sphere' => $data['left_sphere'] ?? null,
-                    'cylinder' => $data['left_cylinder'] ?? null,
-                    'axis' => $data['left_axis'] ?? null,
-                ]);
+                // ✅ FIX: prevent duplicate glasses
+                PrescriptionGlasses::updateOrCreate(
+                    [
+                        'prescription_id' => $prescription->id,
+                        'eye' => 'left',
+                    ],
+                    [
+                        'sphere' => $data['left_sphere'] ?? null,
+                        'cylinder' => $data['left_cylinder'] ?? null,
+                        'axis' => $data['left_axis'] ?? null,
+                    ]
+                );
 
-                PrescriptionGlasses::create([
-                    'prescription_id' => $prescription->id,
-                    'eye' => 'right',
-                    'sphere' => $data['right_sphere'] ?? null,
-                    'cylinder' => $data['right_cylinder'] ?? null,
-                    'axis' => $data['right_axis'] ?? null,
-                ]);
+                PrescriptionGlasses::updateOrCreate(
+                    [
+                        'prescription_id' => $prescription->id,
+                        'eye' => 'right',
+                    ],
+                    [
+                        'sphere' => $data['right_sphere'] ?? null,
+                        'cylinder' => $data['right_cylinder'] ?? null,
+                        'axis' => $data['right_axis'] ?? null,
+                    ]
+                );
             }
         }
 
-        // Update order totals
         $order->update([
             'quantity' => $totalQty,
             'total_price' => $grandTotal
         ]);
 
-        // Save customer details from user_details table
         OrderDetail::create([
             'order_id' => $order->id,
             'full_name' => $userDetail->full_name,
@@ -154,7 +187,9 @@ public function store(Request $request)
             'success' => true,
             'message' => 'Order created successfully',
             'order_no' => $order->order_number,
-            'redirect_url'=>route("User.payments.index",$order->order_number)
+            'redirect_url' => route('User.payment.index', [
+                'order_no' => $order->order_number
+            ])
         ]);
 
     } catch (\Exception $e) {
@@ -166,7 +201,6 @@ public function store(Request $request)
         ], 422);
     }
 }
-
 
 
 
