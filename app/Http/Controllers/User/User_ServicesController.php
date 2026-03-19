@@ -24,7 +24,7 @@ class User_ServicesController extends Controller
      */
     public function index()
     {
-        return $this->renderUserViewPage('User.services.index','services',['ListOfServices' => Services::all()]);
+        return $this->renderUserViewPage('User.Services.index','services',['ListOfServices' => Services::all()]);
     }
 
     /**
