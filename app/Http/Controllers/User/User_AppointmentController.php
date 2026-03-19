@@ -62,7 +62,7 @@ class User_AppointmentController extends Controller
             'appointment_date' => 'required|date|after:today',
             'reson' => 'nullable|string|max:500',
         ]);
-
+dd($$validated);
         Appointment::create([
             'user_id' => Auth::id(),
             ...$validated
