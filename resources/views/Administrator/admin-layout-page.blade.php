@@ -16,7 +16,7 @@
        class="fixed inset-0 bg-black/30 z-40 hidden peer-checked:block lg:hidden"></label>
 
 <!-- Sidebar -->
-@include('administrator.Navigation.index')
+@include('Administrator.Navigation.index')
 
 <!-- App Shell -->
 <div class="lg:pl-72 min-h-screen flex flex-col">
@@ -62,7 +62,7 @@
     <!-- Content -->
     <main class="flex-1 p-6 max-w-[1600px] w-full mx-auto">
         <div class="mb-6">
-            @include('administrator.components.messages.index')
+            @include('Administrator.components.messages.index')
         </div>
 
         @yield('content')

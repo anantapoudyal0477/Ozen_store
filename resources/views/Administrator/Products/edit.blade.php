@@ -1,4 +1,4 @@
-@extends('administrator.admin-layout-page')
+@extends('Administrator.admin-layout-page')
 @section('title',$pageTitle??"exe")
 @section('content')
 {{-- {{print_r($productData)}} --}}

@@ -1,5 +1,5 @@
 
-@extends('user.user-layout-page')
+@extends('User.user-layout-page')
 
 @section('title', $pageTitle ?? 'Premium Eyewear Collection')
 
