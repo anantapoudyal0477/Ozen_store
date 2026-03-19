@@ -14,7 +14,7 @@
 
     <!-- Navigation Links -->
     <nav class="flex-1 overflow-y-auto px-2 space-y-1">
-        {{print_r($User_navigation)}}
+        {{$User_navigation}}
         @foreach ($User_navigation as $item)
             @php
                 $linkUrl = $item->route_name ? route($item->route_name) : ($item->url ?? '#');
