@@ -41,7 +41,7 @@ class User_AppointmentController extends Controller
 
     // Render full page for non-AJAX request
     return $this->renderUserViewPage(
-        'User.Services.Appointment.create',
+        'User.services.Appointment.create',
         'services',
         ['ListOfDoctors' => $doctors] // pass same variable to full page
     );
@@ -65,8 +65,9 @@ class User_AppointmentController extends Controller
     {
         // dd($request->all());
          $validated = $request->validate([
+            'doctor_id' => 'required|exists:users,id',
             'appointment_date' => 'required|date|after:today',
-            'message' => 'nullable|string|max:500',
+            'reson' => 'nullable|string|max:500',
         ]);
 
         Appointment::create([
