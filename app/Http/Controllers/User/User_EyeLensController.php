@@ -22,7 +22,7 @@ class User_EyeLensController extends Controller
     public function index()
     {
         $userLenses = EyeLens::where('user_id', operator: Auth::id())->get();
-        return $this->renderUserViewPage('User.services.LensReplacement.index', 'Eye Lenses', ['userLenses'=>$userLenses]);
+        return $this->renderUserViewPage('User.Services.LensReplacement.index', 'Eye Lenses', ['userLenses'=>$userLenses]);
     }
 
     // Show create form
@@ -39,7 +39,7 @@ class User_EyeLensController extends Controller
 
 
 
-        return $this->renderUserViewPage('User.services.LensReplacement.create', 'Eye Lenses',
+        return $this->renderUserViewPage('User.Services.LensReplacement.create', 'Eye Lenses',
     [
         'brands' => $brands,
         'materials' => $materials,
@@ -117,14 +117,14 @@ class User_EyeLensController extends Controller
         'eye_lens_id' => $eyeLens->id
     ]);
 
-        return redirect()->route('LensReplacement.index')->with('success', 'Lens added successfully.');
+        return redirect()->route('User.Services.LensReplacement.index')->with('success', 'Lens added successfully.');
     }
 
     // Show specific lens
     public function show($id)
     {
         $lens = EyeLens::where('user_id', Auth::id())->findOrFail($id);
-        return view('User.services.LensReplacement.show', compact('lens'));
+        return view('User.Services.LensReplacement.show', compact('lens'));
     }
 
     // Update lens
@@ -139,7 +139,7 @@ class User_EyeLensController extends Controller
 
         $lens->update($request->only('lens_type', 'prescription'));
 
-        return redirect()->route('LensReplacement.index')->with('success', 'Lens updated successfully.');
+        return redirect()->route('User.Services.LensReplacement.index')->with('success', 'Lens updated successfully.');
     }
 
     // Delete lens
@@ -148,6 +148,6 @@ class User_EyeLensController extends Controller
         $lens = EyeLens::where('user_id', Auth::id())->findOrFail($id);
         $lens->delete();
 
-        return redirect()->route('LensReplacement.index')->with('success', 'Lens deleted successfully.');
+        return redirect()->route('User.Services.LensReplacement.index')->with('success', 'Lens deleted successfully.');
     }
 }
