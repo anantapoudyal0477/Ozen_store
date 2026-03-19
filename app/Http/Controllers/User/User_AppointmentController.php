@@ -6,65 +6,58 @@ use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use App\Http\Controllers\Controller;
 
 class User_AppointmentController extends Controller
 {
     const NO_OF_DOCTOR_PER_PAGE = 6;
+
     /**
-     * Display a listing of the resource.
+     * Display a listing of appointments.
      */
     public function index()
     {
-        $ListOfAppointment = Appointment::where('user_id', Auth::id())->get();
+        $appointments = Appointment::where('user_id', Auth::id())->get();
 
-
-        return $this->renderUserViewPage('User.Services.Appointment.index','services', ['ListOfAppointment' => $ListOfAppointment]);
-
+        return $this->renderUserViewPage(
+            'User.Services.Appointment.index',
+            'services',
+            ['ListOfAppointment' => $appointments]
+        );
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new appointment.
      */
-   public function create(Request $request)
-{
-    // Use pagination, 6 doctors per page
-    $doctors = Doctor::with(['profile', 'schedules'])->paginate(6);
+    public function create(Request $request)
+    {
+        $doctors = Doctor::with(['profile', 'schedules'])
+            ->paginate(self::NO_OF_DOCTOR_PER_PAGE);
 
-    if ($request->ajax()) {
-        // Render only the doctor cards partial
-        $html = view('User.Components.DoctorCard.index', compact('doctors'))->render();
-        $pagination = (string) $doctors->links();
-        return response()->json(['html' => $html, 'pagination' => $pagination]);
-    }
+        // AJAX request (pagination / dynamic loading)
+        if ($request->ajax()) {
+            $html = view('User.Components.DoctorCard.index', compact('doctors'))->render();
 
-    // Render full page for non-AJAX request
-    return $this->renderUserViewPage(
-        'User.services.Appointment.create',
-        'services',
-        ['ListOfDoctors' => $doctors] // pass same variable to full page
-    );
-}
+            return response()->json([
+                'html' => $html,
+                'pagination' => (string) $doctors->links()
+            ]);
+        }
 
-
-// AJAX fetch for pagination
- public function fetchDoctors($page_no) {
-    dd("hello");
-    //  $doctors = Doctor::with(['profile','schedules'])->paginate(6);
-    //   dd($doctors); // Only return the partial if AJAX
-    //   if ($request->ajax()) { return view('User.components.DoctorCard.index', compact('doctors'))->render();
-    // } // Redirect to create page if accessed directly
-    //  return redirect()->route('User.services.appointment.create');
+        // ✅ FIXED: correct case-sensitive path
+        return $this->renderUserViewPage(
+            'User.Services.Appointment.create',
+            'services',
+            ['ListOfDoctors' => $doctors]
+        );
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created appointment.
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-         $validated = $request->validate([
+        $validated = $request->validate([
             'doctor_id' => 'required|exists:users,id',
             'appointment_date' => 'required|date|after:today',
             'reson' => 'nullable|string|max:500',
@@ -74,39 +67,25 @@ class User_AppointmentController extends Controller
             'user_id' => Auth::id(),
             ...$validated
         ]);
-        return response()->json(['message' => 'Appointment booked successfully.'], 200);
 
+        return response()->json([
+            'message' => 'Appointment booked successfully.'
+        ], 200);
     }
 
     /**
-     * Display the specified resource.
+     * Optional AJAX fetch (clean version)
      */
-    public function show(string $id)
+    public function fetchDoctors(Request $request)
     {
-        //
+        $doctors = Doctor::with(['profile', 'schedules'])
+            ->paginate(self::NO_OF_DOCTOR_PER_PAGE);
+
+        return view('User.Components.DoctorCard.index', compact('doctors'))->render();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
+    public function edit(string $id) {}
+    public function update(Request $request, string $id) {}
+    public function destroy(string $id) {}
 }
