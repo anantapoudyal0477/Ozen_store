@@ -1,10 +1,10 @@
 
-@extends('user.user-layout-page')
+@extends('User.user-layout-page')
 
 @section('title', $pageTitle ?? 'Premium Eyewear Collection')
 
 @section('content')
 
-@include('user.components.services.servicesCard.index',['servicesList' => $ListOfServices])
+@include('User.Components.Services.ServicesCard.index',['servicesList' => $ListOfServices])
 
 @endsection
