@@ -14,7 +14,7 @@ class ContactController extends Controller
     public function index()
     {
 
-        return $this->renderViewerPage('viewer.Contact.Contact','Contact us');;
+        return $this->renderViewerPage('Viewer.Contact.Contact','Contact us');;
     }
 
         public function submit(){}
