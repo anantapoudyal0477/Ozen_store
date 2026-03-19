@@ -60,7 +60,7 @@ public function index($order_no)
     ];
 
     return $this->renderUserViewPage(
-        "User.payment.index",
+        "User.Payment.index",
         'payment',
         [
             'order' => $order,
