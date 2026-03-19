@@ -28,7 +28,7 @@ public function index()
 
         // Pass product data as optional additionalData
         return $this->renderViewerPage(
-            'viewer.products.index', // Blade view
+            'Viewer.Products.index', // Blade view
             'Products',                 // Page title
             ['productData' => $productData] // Additional data passed to the view
         );
@@ -36,7 +36,7 @@ public function index()
     } catch (\Exception $e) {
         Log::error("Error loading products: " . $e->getMessage());
 
-        return response()->view('error.Errorpage', [
+        return response()->view('Error.Errorpage', [
             'message' => 'Sorry, we are unable to load the products at the moment.'
         ], 500);
     }
