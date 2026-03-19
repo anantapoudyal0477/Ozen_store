@@ -58,7 +58,7 @@ class User_AppointmentController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'doctor_id' => 'required|exists:users,id',
+            'doctor_id' => 'required|exists:doctors,id',
             'appointment_date' => 'required|date|after:today',
             'reson' => 'nullable|string|max:500',
         ]);
