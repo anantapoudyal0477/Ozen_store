@@ -60,7 +60,7 @@
 
     <!-- Actions -->
     <div class="flex gap-4">
-        <a href="{{ route('User.Services.Appointment.Create') }}"
+        <a href="{{ route('User.Services.Appointment.create') }}"
            class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
             Book Appointment
         </a>
