@@ -40,7 +40,7 @@ class ServicesController extends Controller
     public function show(string $id)
     {
         $services = Services::findOrFail($id);
-        return $this->renderViewerPage('viewer.services.ServicesDetail', 'Service Detail', ["services"=>$services]);
+        return $this->renderViewerPage('Viewer.Services.ServicesDetail', 'Service Detail', ["services"=>$services]);
     }
 
     /**
