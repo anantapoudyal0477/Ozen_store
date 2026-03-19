@@ -6,6 +6,8 @@
 @section('content')
 
 EyeCheckups show
-{{ Auth::user()->user_type }}
+<h2>Appointment Details</h2>
+<p>Date: {{ $appointment->appointment_date }}</p>
+<p>Message: {{ $appointment->message }}</p>
 
 @endsection

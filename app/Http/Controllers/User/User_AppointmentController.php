@@ -84,8 +84,48 @@ class User_AppointmentController extends Controller
         return view('User.Components.DoctorCard.index', compact('doctors'))->render();
     }
 
-    public function show(string $id) {}
-    public function edit(string $id) {}
-    public function update(Request $request, string $id) {}
-    public function destroy(string $id) {}
+    public function show(string $id) {
+         $appointment = Appointment::findOrFail($id);
+
+    return $this->renderUserViewPage(
+        'User.Services.Appointment.show',
+        'services',
+        ['appointment' => $appointment]
+    );
+    }
+    public function edit(string $id) {
+         $appointment = Appointment::findOrFail($id);
+
+    return $this->renderUserViewPage(
+        'User.Services.Appointment.edit',
+        'services',
+        ['appointment' => $appointment]
+    );
+    }
+    public function update(Request $request, string $id) {
+         $appointment = Appointment::findOrFail($id);
+
+    $validated = $request->validate([
+        'appointment_date' => 'required|date|after:today',
+        'message' => 'nullable|string|max:500',
+    ]);
+
+    $appointment->update($validated);
+
+    return redirect()
+        ->route('User.services.appointment.index')
+        ->with('success', 'Appointment updated successfully.');
+        
+    }
+    public function destroy(string $id) {
+
+ $appointment = Appointment::findOrFail($id);
+    $appointment->delete();
+
+    return redirect()
+        ->route('User.services.appointment.index')
+        ->with('success', 'Appointment deleted successfully.');
+
+
+    }
 }
