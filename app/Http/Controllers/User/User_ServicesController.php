@@ -85,7 +85,7 @@ public function indexPrescription()
         // dd($prescriptions);
 
     return $this->renderUserViewPage(
-        'User.services.PrescriptionGlasses.index',
+        'User.Services.PrescriptionGlasses.index',
         'services',
         ['prescriptions' => $prescriptions]
     );
@@ -95,7 +95,7 @@ public function indexPrescription()
 
 public function createPrescription(Request $request)
 {
-        return $this->renderUserViewPage('User.services.PrescriptionGlasses.create','services');
+        return $this->renderUserViewPage('User.Services.PrescriptionGlasses.create','services');
 
 }
 
@@ -121,7 +121,7 @@ public function createPrescription(Request $request)
     public function editPrescription(int $id)
     {
         $prescription = PrescriptionGlasses::findOrFail($id);
-        return $this->renderUserViewPage('User.services.PrescriptionGlasses.edit','services',['prescription' => $prescription]);
+        return $this->renderUserViewPage('User.Services.PrescriptionGlasses.edit','services',['prescription' => $prescription]);
     }
 public function storePrescription(Request $request)
 {
