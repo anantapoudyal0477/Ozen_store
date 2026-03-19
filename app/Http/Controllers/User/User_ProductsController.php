@@ -22,7 +22,7 @@ public function index($type = null)
     }
 
     return $this->renderUserViewPage(
-        'user.product.index',
+        'User.Product.index',
         'products',
         [
             'products' => $products,
