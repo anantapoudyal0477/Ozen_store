@@ -5,6 +5,6 @@
 
 @section('content')
 
-@include('User.components.productComponent.productCard.index',["productData"=>$products,'key'=>$key ?? null,'EyePowerData'=>$EyePowerData ?? null])
+@include('User.Components.ProductComponent.ProductCard.index',["productData"=>$products,'key'=>$key ?? null,'EyePowerData'=>$EyePowerData ?? null])
 
 @endsection
