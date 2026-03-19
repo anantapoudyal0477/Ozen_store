@@ -20,7 +20,7 @@ class User_AppointmentController extends Controller
         $ListOfAppointment = Appointment::where('user_id', Auth::id())->get();
 
 
-        return $this->renderUserViewPage('User.services.Appointment.index','services', ['ListOfAppointment' => $ListOfAppointment]);
+        return $this->renderUserViewPage('User.Services.Appointment.index','services', ['ListOfAppointment' => $ListOfAppointment]);
 
     }
 
@@ -34,7 +34,7 @@ class User_AppointmentController extends Controller
 
     if ($request->ajax()) {
         // Render only the doctor cards partial
-        $html = view('User.components.DoctorCard.index', compact('doctors'))->render();
+        $html = view('User.Components.DoctorCard.index', compact('doctors'))->render();
         $pagination = (string) $doctors->links();
         return response()->json(['html' => $html, 'pagination' => $pagination]);
     }
