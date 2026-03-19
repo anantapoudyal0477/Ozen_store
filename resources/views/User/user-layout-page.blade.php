@@ -30,7 +30,7 @@
     <!-- Sidebar -->
     <aside class="w-64 bg-white dark:bg-gray-900 shadow-md flex-shrink-0 flex flex-col">
         <div class="flex-1 overflow-y-auto">
-            @include('user.navigation.index', ['NavigationData' => $NavigationData ?? [], 'CompanyBrandData' => $CompanyBrandData ?? []])
+            @include('User.Navigation.index', ['NavigationData' => $NavigationData ?? [], 'CompanyBrandData' => $CompanyBrandData ?? []])
         </div>
 
         <!-- Optional logout/footer at bottom of sidebar -->
@@ -49,14 +49,14 @@
 
         <main class="flex-1 overflow-y-auto p-6 fade-in">
             <div>
-                @include('user.components.messages.index')
+                @include('User.Components.Messages.index')
             </div>
             @yield('content')
         </main>
 
         <!-- Footer -->
         <footer class="bg-gray-100 dark:bg-gray-900 p-4 mt-auto">
-            @include('user.Footer.index', ['FooterData' => $FooterData ?? []])
+            @include('User.Footer.index', ['FooterData' => $FooterData ?? []])
         </footer>
     </div>
 </div>
