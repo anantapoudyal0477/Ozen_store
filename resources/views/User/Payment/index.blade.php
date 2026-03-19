@@ -188,7 +188,7 @@
 
     // 2️⃣ Helper: build cancel order URL dynamically
     function getCancelUrl() {
-        return "{{ route('User.Orders.destroy', ':order') }}".replace(':order', orderNumber);
+        return "{{ route('User.orders.destroy', ':order') }}".replace(':order', orderNumber);
     }
 
     // 3️⃣ Cancel order via AJAX
@@ -206,7 +206,7 @@
             const data = await res.json();
             if(data.success){
                 alert(data.message);
-                window.location.href = "{{ route('User.Orders.index') }}";
+                window.location.href = "{{ route('User.orders.index') }}";
             } else {
                 alert('Failed to cancel order: '+data.message);
             }
@@ -225,7 +225,7 @@
 
     // 5️⃣ QR Code Generation for direct payment (shows JSON payload)
   document.getElementById('generateQRBtn').addEventListener('click', () => {
-    const jsonUrl = "{{ route('User.Payment.json', ':order') }}".replace(':order', orderNumber);
+    const jsonUrl = "{{ route('User.payment.json', ':order') }}".replace(':order', orderNumber);
 
     const qr = new QRious({
         element: document.createElement('canvas'),
