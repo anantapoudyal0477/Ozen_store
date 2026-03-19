@@ -60,7 +60,7 @@ class User_AppointmentController extends Controller
         $validated = $request->validate([
             'doctor_id' => 'required|exists:doctors,id',
             'appointment_date' => 'required|date|after:today',
-            'reson' => 'nullable|string|max:500',
+            'message' => 'nullable|string|max:500',
         ]);
 
         Appointment::create([
