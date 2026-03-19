@@ -3,12 +3,12 @@
 @section('title', e($pageTitle ?? 'Products'))
 
 @section('content')
-<div>
+<!-- <div>
     @include('Viewer.Components.Messages.Error_Messages')
 </div>
 <div>
     @include('Viewer.Components.Messages.Success_Messages')
-</div>
+</div> -->
 
     <!-- Hero Section -->
     <div>
