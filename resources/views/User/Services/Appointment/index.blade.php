@@ -47,11 +47,11 @@
                             </span>
                         </td>
                         <td class="px-6 py-3 text-right text-sm">
-                            <a href="{{ route('User.services.Appointment.show', $appointment->id) }}"
+                            <a href="{{ route('User.services.appointment.show', $appointment->id) }}"
                                class="text-blue-600 hover:underline mr-2">View</a>
-                            <a href="{{ route('User.services.Appointment.edit', $appointment->id) }}"
+                            <a href="{{ route('User.services.appointment.edit', $appointment->id) }}"
                                class="text-green-600 hover:underline mr-2">Edit</a>
-                            <form action="{{ route('User.services.Appointment.destroy', $appointment->id) }}"
+                            <form action="{{ route('User.services.appointment.destroy', $appointment->id) }}"
                                   method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
