@@ -154,7 +154,7 @@ public function store(Request $request)
             'success' => true,
             'message' => 'Order created successfully',
             'order_no' => $order->order_number,
-            'redirect_url'=>route("User.payment.index",$order->order_number)
+            'redirect_url'=>route("User.payments.index",$order->order_number)
         ]);
 
     } catch (\Exception $e) {
