@@ -23,7 +23,7 @@
             </label>
 
             <div id="doctor-cards-container">
-                @include('User.components.DoctorCard.index', ['doctors' => $ListOfDoctors])
+                @include('User.Components.DoctorCard.index', ['doctors' => $ListOfDoctors])
             </div>
 
             <div class="mt-4" id="doctor-pagination-links">
