@@ -41,7 +41,7 @@ class User_AppointmentController extends Controller
 
     // Render full page for non-AJAX request
     return $this->renderUserViewPage(
-        'User.services.Appointment.create',
+        'User.Services.Appointment.create',
         'services',
         ['ListOfDoctors' => $doctors] // pass same variable to full page
     );
