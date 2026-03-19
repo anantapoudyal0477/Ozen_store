@@ -14,7 +14,7 @@ class ServicesController extends Controller
     public function index()
     {
         $servicesList = Services::all();
-        return $this->renderViewerPage('viewer.services.Services', 'Services',["servicesList"=>$servicesList]);
+        return $this->renderViewerPage('Viewer.Services.Services', 'Services',["servicesList"=>$servicesList]);
     }
         public function submit(){}
 
