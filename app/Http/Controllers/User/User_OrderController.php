@@ -26,7 +26,7 @@ public function index()
         ])->where('user_id', $userId)->latest()->get();
 
         // dd($order);
-        return $this->renderUserViewPage('User.orders.index','order',["ListOfOrder"=>$orders]);
+        return $this->renderUserViewPage('User.Orders.index','order',["ListOfOrder"=>$orders]);
 
     }
 
