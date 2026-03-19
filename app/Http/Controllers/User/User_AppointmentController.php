@@ -65,12 +65,7 @@ class User_AppointmentController extends Controller
     {
         // dd($request->all());
          $validated = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'contact_number' => 'required|string|max:20',
-            'doctor_id' => 'required|exists:users,id',
-            'email' => 'nullable|email',
             'appointment_date' => 'required|date|after:today',
-            'appointment_time' => 'required',
             'message' => 'nullable|string|max:500',
         ]);
 
