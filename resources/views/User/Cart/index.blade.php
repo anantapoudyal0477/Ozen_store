@@ -18,7 +18,7 @@
                     <option value="regular">Regular</option>
                     <option value="prescription">Prescription</option>
                 </select>
-                <form id="clearCartForm" action="{{ route('User.Cart.clear') }}" method="POST">
+                <form id="clearCartForm" action="{{ route('User.cart.clear') }}" method="POST">
                     @csrf
                     @method('DELETE')
 
