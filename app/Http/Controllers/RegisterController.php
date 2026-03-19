@@ -17,7 +17,7 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        return $this->renderViewerPage('register', 'Register');
+        return $this->renderViewerPage('Register', 'Register');
     }
        public function submit(Request $request){
         $data = $request->all();
