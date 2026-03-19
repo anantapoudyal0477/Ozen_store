@@ -60,12 +60,12 @@
 
     <!-- Actions -->
     <div class="flex gap-4">
-        <a href="{{ route('User.services.appointment.create') }}"
+        <a href="{{ route('User.Services.Appointment.Create') }}"
            class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
             Book Appointment
         </a>
 
-        <a href="{{ route('User.services.appointment.index') }}"
+        <a href="{{ route('User.Services.Appointment.index') }}"
            class="border border-gray-300 px-6 py-3 rounded-lg hover:bg-gray-100 transition">
             View Appointments
         </a>
