@@ -85,6 +85,7 @@ $(document).ready(function() {
     // Fetch doctors via AJAX
     function fetchDoctors(url) {
         let selectedDoctorId = $('#selected_doctor_id').val();
+        console.log(selectedDoctorId);
 
         $.ajax({
             url: url,
