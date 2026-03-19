@@ -40,7 +40,7 @@ public function index($order_no)
     }
 
     $paymentPayload = [
-        'return_url'         => route('User.Payment.index', $order->order_number),
+        'return_url'         => route('User.payment.index', $order->order_number),
         'website_url'        => config('App.url'),
         'amount'             => $order->total_price,
         'purchase_order_id'  => $order->order_number,
@@ -111,7 +111,7 @@ public function showOrderJson($order_no)
     }
 
     $payload = [
-        "return_url"          => route('User.Payment.index', $order->order_number),
+        "return_url"          => route('User.payment.index', $order->order_number),
         "website_url"         => url('/'),
         "amount"              => $actualPriceSum + $vatAmount,
         "purchase_order_id"   => $order->order_number,
@@ -130,7 +130,7 @@ public function showOrderJson($order_no)
         "merchant_extra"      => "merchant_extra"
     ];
 
-    return $this->renderUserViewPage('User.Payment.json','test payload', compact('payload'));
+    return $this->renderUserViewPage('User.payment.json','test payload', compact('payload'));
 }
 
 
