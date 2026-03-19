@@ -16,7 +16,7 @@ class User_WishlistController extends Controller
      */
     public function index()
     {
-        return $this->renderUserViewPage('user.wishlist.index','wishlist');
+        return $this->renderUserViewPage('User.Wishlist.index','wishlist');
 
     }
 
