@@ -11,21 +11,37 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('order_items', function (Blueprint $table) {
-            $table->id();
+         
+        Schema::create('order_items', function (Blueprint $table) {
+    $table->id();
 
-            $table->unsignedBigInteger('order_id');
-            $table->unsignedBigInteger('product_id');
-            $table->integer('quantity');
+    $table->unsignedBigInteger('order_id');
 
-            $table->text('isPrescription');
+    // 👇 make product optional
+    $table->unsignedBigInteger('product_id')->nullable();
 
-            $table->timestamps();
+    // 👇 ADD THIS (VERY IMPORTANT)
+    $table->unsignedBigInteger('eye_lens_id')->nullable();
 
-            // relations
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-        });
+    $table->integer('quantity');
+    $table->text('isPrescription')->nullable();
+
+    $table->timestamps();
+
+    // relations
+    $table->foreign('order_id')
+        ->references('id')->on('orders')
+        ->onDelete('cascade');
+
+    $table->foreign('product_id')
+        ->references('id')->on('products')
+        ->onDelete('cascade');
+
+    // 👇 NEW relation
+    $table->foreign('eye_lens_id')
+        ->references('id')->on('eye_lenses')
+        ->onDelete('cascade');
+});
     }
 
     /**
