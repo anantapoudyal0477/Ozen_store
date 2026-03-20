@@ -33,7 +33,7 @@ class User_CartController extends Controller
 
         // Limit cart size
         if (count($cart) >= 50) {
-            return redirect()->route('User.Cart.index')->with('error', 'Cart item limit reached!');
+            return redirect()->route('User.cart.index')->with('error', 'Cart item limit reached!');
         }
 
         // Generate secure unique cart ID
@@ -52,7 +52,7 @@ class User_CartController extends Controller
 
         session()->put('cart', $cart);
 
-        return redirect()->route('User.Cart.index')->with('success', 'Product added to cart!');
+        return redirect()->route('User.cart.index')->with('success', 'Product added to cart!');
     }
 
     // Add multiple or prescription products
