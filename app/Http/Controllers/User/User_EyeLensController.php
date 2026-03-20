@@ -12,7 +12,7 @@ use App\Models\EyeLensFeatures;
 use App\Models\EyeLensType;
 use App\Models\Materials;
 use App\Models\Brand;
-use App\Models\wearingReplacements;
+use App\Models\WearingReplacements;
 use App\Models\GlassesColor;
 use App\Http\Controllers\Controller;
 
@@ -34,7 +34,7 @@ class User_EyeLensController extends Controller
         $optics = EyeLensOptics::all();
         $features = EyeLensFeatures::all();
         $dimensions = EyeLensDimensions::all();
-        $wearingReplacements = wearingReplacements::all();
+        $wearingReplacements = WearingReplacements::all();
         $colors = GlassesColor::all();
 
 
