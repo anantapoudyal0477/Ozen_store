@@ -52,7 +52,7 @@
             <label class="block text-sm font-medium text-gray-700 mb-1">
                 Reason for Visit
             </label>
-            <textarea name="reason" rows="3" 
+            <textarea name="message" rows="3" 
                 class="w-full border border-gray-300 rounded-md px-3 py-2"
                 placeholder="Describe your issue..."></textarea>
         </div>
