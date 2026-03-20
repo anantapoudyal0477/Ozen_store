@@ -117,7 +117,7 @@ class User_EyeLensController extends Controller
         'eye_lens_id' => $eyeLens->id
     ]);
 
-        return redirect()->route('User.Services.LensReplacement.index')->with('success', 'Lens added successfully.');
+        return redirect()->route('User.services.LensReplacement.index')->with('success', 'Lens added successfully.');
     }
 
     // Show specific lens
