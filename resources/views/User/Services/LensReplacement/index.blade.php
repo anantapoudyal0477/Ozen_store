@@ -6,6 +6,7 @@
 
 <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-12">
     <div class="container mx-auto px-4 max-w-7xl">
+        
         <!-- Header Section -->
         <div class="mb-10">
             <div class="flex items-center justify-between mb-2">
@@ -15,12 +16,31 @@
                 <div class="flex items-center gap-2 text-sm text-gray-500">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2-9.542-7z"/>
                     </svg>
                     <span class="font-medium">{{ $userLenses->count() }} Lenses</span>
                 </div>
             </div>
+
             <p class="text-gray-600">Manage your prescription lenses and order replacements</p>
+
+            <!-- IMPORTANT NOTICE -->
+            <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-lg shadow-sm">
+                <div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 flex-shrink-0 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M12 9v2m0 4h.01M21 12A9 9 0 11.999 12a9 9 0 0120.001 0z"/>
+                    </svg>
+
+                    <div>
+                        <p class="font-semibold text-lg">Important Notice</p>
+                        <p class="text-sm mt-1">
+                            Online purchasing of lenses is currently unavailable.
+                            Please visit our store to buy lenses. I will personally assist you and manage your appointment.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- @if($userLenses->isEmpty())
