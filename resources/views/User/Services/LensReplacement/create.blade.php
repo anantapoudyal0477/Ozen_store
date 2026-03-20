@@ -268,7 +268,7 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+<!-- <script>
 $(document).ready(function(){
 
     $('#lensReplacementForm').on('submit', function(event){
@@ -300,6 +300,93 @@ $(document).ready(function(){
 
 });
 
-</script>
+</script> -->
+<script>
+$(document).ready(function(){
 
+    $('#lensReplacementForm').on('submit', function(event){
+        event.preventDefault();
+
+        let formData = new FormData(this);
+
+        // Clear old messages
+        $('#error-messages-container').html('');
+        $('#success-message-container').html('');
+
+        $.ajax({
+            url: "{{ route('User.services.LensReplacement.store') }}",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+
+            success: function(response){
+
+                let successHtml = `
+                <div id="success-message" class="max-w-md mx-auto mb-4 bg-green-50 border-l-4 border-green-500 text-green-800 px-4 py-3 rounded-lg shadow-md flex items-start space-x-3 cursor-pointer">
+                    <svg class="w-6 h-6 flex-shrink-0 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div class="flex-1">
+                        <p class="font-semibold">Success!</p>
+                        <p class="text-sm">${response.message}</p>
+                        <p class="text-xs italic mt-1">Click to dismiss</p>
+                    </div>
+                </div>`;
+
+                $('#success-message-container').html(successHtml);
+
+                $('#lensReplacementForm')[0].reset();
+            },
+
+            error: function(xhr){
+
+                if(xhr.status === 422){
+                    let errors = xhr.responseJSON.errors;
+
+                    let errorHtml = `
+                    <div id="error-messages" class="max-w-md mx-auto mb-4 bg-red-50 border-l-4 border-red-500 text-red-800 px-4 py-3 rounded-lg shadow-md flex items-start space-x-3 cursor-pointer">
+                        <svg class="w-6 h-6 flex-shrink-0 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12A9 9 0 11.999 12a9 9 0 0120.001 0z"></path>
+                        </svg>
+                        <div class="flex-1">
+                            <p class="font-semibold">Error!</p>
+                            <p class="text-sm">Please fix the following issues:</p>
+                            <ul class="list-disc list-inside text-sm mt-1 space-y-1">
+                    `;
+
+                    $.each(errors, function(key, value){
+                        errorHtml += `<li>${value[0]}</li>`;
+                    });
+
+                    errorHtml += `
+                            </ul>
+                            <p class="text-xs italic mt-1">Click to dismiss</p>
+                        </div>
+                    </div>`;
+
+                    $('#error-messages-container').html(errorHtml);
+                } else {
+                    $('#error-messages-container').html(`
+                        <div class="max-w-md mx-auto mb-4 bg-red-50 border-l-4 border-red-500 text-red-800 px-4 py-3 rounded-lg shadow-md">
+                            Something went wrong. Please try again.
+                        </div>
+                    `);
+                }
+            }
+        });
+
+    });
+
+    // Click to dismiss (dynamic binding)
+    $(document).on('click', '#error-messages', function(){
+        $(this).fadeOut(400);
+    });
+
+    $(document).on('click', '#success-message', function(){
+        $(this).fadeOut(400);
+    });
+
+});
+</script>
 @endsection
