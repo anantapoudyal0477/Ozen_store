@@ -50,6 +50,8 @@
         <main class="flex-1 overflow-y-auto p-6 fade-in">
             <div>
                 @include('User.Components.Messages.index')
+                <div id="error-messages-container"></div>
+<div id="success-message-container"></div>
             </div>
             @yield('content')
         </main>
