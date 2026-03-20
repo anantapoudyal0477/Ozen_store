@@ -27,7 +27,7 @@
             <thead class="bg-gray-100">
                 <tr>
                     <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Date</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Time</th>
+                 
                     <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Doctor</th>
                     <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Status</th>
                     <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700">Actions</th>
@@ -37,7 +37,7 @@
                 @forelse($ListOfAppointment as $appointment)
                     <tr>
                         <td class="px-6 py-3 text-sm text-gray-800">{{ $appointment->appointment_date }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-800">{{ $appointment->appointment_time }}</td>
+                      
                         <td class="px-6 py-3 text-sm text-gray-800">{{ $appointment->doctor->name }}</td>
                         <td class="px-6 py-3 text-sm">
                             <span class="px-2 py-1 rounded-lg text-white text-xs
