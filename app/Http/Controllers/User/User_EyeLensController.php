@@ -128,10 +128,14 @@ class User_EyeLensController extends Controller
             'isPrescription' => 'yes',
         ]);
 
-        // ✅ Final response (clean)
-        return redirect()
-            ->route('User.services.LensReplacement.index')
-            ->with('success', 'Lens ordered successfully.');
+        // // ✅ Final response (clean)
+        // return redirect()
+        //     ->route('User.services.LensReplacement.index')
+        //     ->with('success', 'Lens ordered successfully.');
+        return response()->json([
+    'success' => true,
+    'message' => 'Lens Replacement added successfully.'
+]);
     }
 
     // Show specific lens
