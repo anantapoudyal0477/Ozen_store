@@ -26,8 +26,8 @@ class WearingReplacementsSeeder extends Seeder
             ['replacement_cycle'=>'Biweekly','wearing_schedule'=>'Extended Wear'],
         ];
 
-        // foreach($options as $option){
-        //     WearingReplacements::create($option);
-        // }
+        foreach($options as $option){
+            WearingReplacements::create($option);
+        }
     }
 }
