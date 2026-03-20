@@ -62,6 +62,7 @@ class DatabaseSeeder extends Seeder
 RoleSeeder::class,
 
             AdministratorSeeder::class,
+                    WearingReplacementsSeeder::class,
 
 
 
