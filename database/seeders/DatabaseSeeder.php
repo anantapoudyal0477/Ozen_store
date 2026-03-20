@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
             // PrescriptionGlassesSeeder::class,
             UserNavigationLinksSeeder::class,
             EyeLensTypeSeeder::class,
-            WearingReplacementsSeeder::class,
+           
             // EyeLensSeeder::class,
             MaterialsSeeder::class,
             DoctorSeeder::class,
