@@ -127,15 +127,15 @@
             </div>
 
             <!-- Footer CTA -->
-            <div class="mt-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-xl p-8 text-center">
+           <div class="mt-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-xl p-8 text-center">
                 <h3 class="text-2xl font-bold text-white mb-3">Need a New Prescription?</h3>
                 <p class="text-blue-100 mb-6">Add another lens to your collection or update your existing prescriptions</p>
-                <a href="#" class="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-blue-600 font-semibold px-8 py-3 rounded-xl transition-all duration-300 shadow-lg transform hover:-translate-y-0.5">
+                    <a href="{{ route('User.services.LensReplacement.create') }}" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                     </svg>
-                    Add New Lens
-                </a>
+                        Order Your First Lens
+                    </a>
             </div>
         @endif
     </div>
