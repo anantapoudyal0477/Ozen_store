@@ -23,8 +23,8 @@
             <p class="text-gray-600">Manage your prescription lenses and order replacements</p>
         </div>
 
-        @if($userLenses->isEmpty())
-            <!-- Empty State -->
+        <!-- @if($userLenses->isEmpty())
+            <!-- Empty State --
             <div class="bg-white rounded-3xl shadow-xl p-12 text-center border border-gray-100">
                 <div class="max-w-md mx-auto">
                     <div class="w-20 h-20 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -44,12 +44,12 @@
                 </div>
             </div>
         @else
-            <!-- Lens Cards Grid -->
+            <!-- Lens Cards Grid --
             <div class="grid grid-cols-1 gap-6">
                 @foreach($userLenses as $lens)
                 <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 group">
                     <div class="p-6">
-                        <!-- Card Header -->
+                        <!-- Card Header --
                         <div class="flex items-start justify-between mb-6">
                             <div class="flex-1">
                                 <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ $lens->lens_name }}</h3>
@@ -78,34 +78,34 @@
                             </a> --}}
                         </div>
 
-                        <!-- Specifications Grid -->
+                        <!-- Specifications Grid --
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                            <!-- Material -->
+                            <!-- Material --
                             <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-4 border border-slate-200">
                                 <p class="text-xs text-gray-500 uppercase tracking-wider mb-1 font-semibold">Material</p>
                                 <p class="text-lg font-bold text-gray-800">{{ $lens->material->name ?? 'Standard' }}</p>
                             </div>
 
-                            <!-- Sphere -->
+                            <!-- Sphere --
                             <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 border border-blue-200">
                                 <p class="text-xs text-blue-600 uppercase tracking-wider mb-1 font-semibold">Sphere (SPH)</p>
                                 <p class="text-lg font-bold text-blue-900">{{ $lens->optics->sphere ?? '-' }}</p>
                             </div>
 
-                            <!-- Cylinder -->
+                            <!-- Cylinder --
                             <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-4 border border-indigo-200">
                                 <p class="text-xs text-indigo-600 uppercase tracking-wider mb-1 font-semibold">Cylinder (CYL)</p>
                                 <p class="text-lg font-bold text-indigo-900">{{ $lens->optics->cylinder ?? '-' }}</p>
                             </div>
 
-                            <!-- Axis -->
+                            <!-- Axis --
                             <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 border border-purple-200">
                                 <p class="text-xs text-purple-600 uppercase tracking-wider mb-1 font-semibold">Axis</p>
                                 <p class="text-lg font-bold text-purple-900">{{ $lens->optics->axis ?? '-' }}°</p>
                             </div>
                         </div>
 
-                        <!-- Additional Info -->
+                        <!-- Additional Info --
                         @if($lens->optics->add_power)
                         <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-4">
                             <div class="flex items-center gap-3">
@@ -126,7 +126,7 @@
                 @endforeach
             </div>
 
-            <!-- Footer CTA -->
+            <!-- Footer CTA --
            <div class="mt-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-xl p-8 text-center">
                 <h3 class="text-2xl font-bold text-white mb-3">Need a New Prescription?</h3>
                 <p class="text-blue-100 mb-6">Add another lens to your collection or update your existing prescriptions</p>
@@ -137,7 +137,7 @@
                         more Lens
                     </a>
             </div>
-        @endif
+        @endif -->
     </div>
 </div>
 
