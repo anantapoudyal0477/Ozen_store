@@ -9,14 +9,14 @@
         
         <!-- Header Section -->
         <div class="mb-10">
-            <div class="flex items-center justify-between mb-2">
+            <!-- <div class="flex items-center justify-between mb-2">
                 <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                     Your Lens Collection
                 </h1>
             
             </div>
 
-            <p class="text-gray-600">Manage your prescription lenses and order replacements</p>
+            <p class="text-gray-600">Manage your prescription lenses and order replacements</p> -->
 
             <!-- IMPORTANT NOTICE -->
             <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-lg shadow-sm">
