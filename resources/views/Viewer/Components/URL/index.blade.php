@@ -316,13 +316,15 @@
 <div class="container">
 
   <div class="avatar-wrap">
-<div class="avatar overflow-hidden">
-    <img 
-        src="{{ asset('images/BrandLogo/BrandLogo.jfif') }}" 
-        alt="Logo" 
-        class="w-full h-full object-cover"
-    >
+    <div class="avatar-ring"></div>
+<div class="avatar">
+    @if(file_exists(public_path('images/logo.png')))
+        <img src="{{ asset('images/logo.png') }}" class="w-full h-full object-contain">
+    @else
+        {{ strtoupper(substr($ownerName, 0, 2)) }}
+    @endif
 </div>
+  </div>
 
   <h1 class="name">{{ $ownerName }}</h1>
   <p class="tagline">Follow the journey</p>
