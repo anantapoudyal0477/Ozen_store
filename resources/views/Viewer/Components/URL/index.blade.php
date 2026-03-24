@@ -91,6 +91,22 @@
       z-index: 1;
       box-shadow: 0 8px 32px rgba(37,99,235,0.35);
     }
+    .logo-inner {
+  width: 70%;              /* controls logo size */
+  height: 70%;
+  border-radius: 50%;      /* makes it round */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;        /* clean background */
+}
+
+.logo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* keeps aspect ratio */
+}
 
     .avatar-ring {
       position: absolute;
@@ -319,7 +335,9 @@
     <div class="avatar-ring"></div>
 <div class="avatar">
     @if(file_exists(public_path('assets/Images/BrandLogo/BrandLogo.jfif')))
-        <img src="{{ asset("assets/Images/BrandLogo/BrandLogo.jfif") }}" class="w-full h-full object-contain">
+        <div class="logo-inner">
+            <img src="{{ asset('assets/Images/BrandLogo/BrandLogo.jfif') }}" alt="Logo">
+        </div>
     @else
         {{ strtoupper(substr($ownerName, 0, 2)) }}
     @endif
