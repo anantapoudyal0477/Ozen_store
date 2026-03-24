@@ -317,10 +317,12 @@
 
   <div class="avatar-wrap">
     <div class="avatar-ring"></div>
-    <div class="avatar">YO</div>
+<div class="avatar">
+  {{ strtoupper(substr($ownerName, 0, 2)) }}
+</div>
   </div>
 
-  <h1 class="name">Your Name</h1>
+  <h1 class="name">{{ $ownerName }}</h1>
   <p class="tagline">Follow the journey</p>
 
   <div class="links">
@@ -407,8 +409,24 @@
     <a class="pill" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
     <a class="pill" href="mailto:you@email.com">Email Me</a>
   </div> --}}
+<div class="divider"><span>Contact</span></div>
 
-  <p class="footer">© 2026 · Ozen Store</p>
+<div class="extras">
+
+  <a class="pill" href="tel:{{ $phone }}">
+    📞 {{ $phone }}
+  </a>
+
+  <a class="pill" href="mailto:{{ $email }}">
+    ✉️ {{ $email }}
+  </a>
+
+  <a class="pill" href="#">
+    📍 {{ $address }}
+  </a>
+
+</div>
+<p class="footer">© {{ date('Y') }} · {{ $ownerName }}</p>
 
 </div>
 </body>

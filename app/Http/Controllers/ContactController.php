@@ -18,7 +18,11 @@ class ContactController extends Controller
     }
 
     public function StayConnected(){
-        return view("Viewer.Components.URL.index");
+        $ownerName = "Ozen Eye Wear";
+        $address = "123 Main Street, City, Country";
+        $email = "ozen@gamil.com";
+        $phone = "+1 (123) 456-7890";
+        return view("Viewer.Components.URL.index",compact('ownerName', 'address', 'email', 'phone'));
     }
 
         public function submit(){}
