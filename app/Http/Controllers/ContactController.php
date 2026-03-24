@@ -17,6 +17,10 @@ class ContactController extends Controller
         return $this->renderViewerPage('Viewer.Contact.Contact','Contact us');;
     }
 
+    public function StayConnected(){
+        return view("Viewer.Components.URL.index");
+    }
+
         public function submit(){}
     /**
      * Show the form for creating a new resource.

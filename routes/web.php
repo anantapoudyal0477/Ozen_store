@@ -47,6 +47,10 @@ Route::prefix('Contact')->name('Contact.')->group(function () {
     Route::post('submit', [ContactController::class, 'submit'])->name('submit');
 });
 
+Route::prefix('stay-connected')->name('stay-connected.')->group(function () {
+    Route::get('/', [ContactController::class, 'StayConnected'])->name('StayConnected');
+});
+
 // Login Group
 Route::prefix('Login')->name('Login.')->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('index');
