@@ -328,7 +328,7 @@
   <div class="links">
 
     <!-- Facebook -->
-    <a class="card facebook" href="https://www.facebook.com/profile.php?id=61587742575807" target="_blank" rel="noopener">
+    <a class="card facebook" href="https://www.facebook.com/profile.php?id=61587742575807&mibextid=wwXIfr" target="_blank" rel="noopener">
       <div class="icon-wrap">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#1877f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -393,7 +393,7 @@
       </div>
       <div class="card-info">
         <div class="platform" style="color:#25d366">WhatsApp</div>
-        <div class="handle">+977 9744593083</div>
+        <div class="handle">+977 {{ $phone }}</div>
       </div>
       <div class="arrow">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
