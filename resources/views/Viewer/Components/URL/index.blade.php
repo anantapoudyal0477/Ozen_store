@@ -316,11 +316,13 @@
 <div class="container">
 
   <div class="avatar-wrap">
-    <div class="avatar-ring"></div>
-<div class="avatar">
-  {{ strtoupper(substr($ownerName, 0, 2)) }}
+<div class="avatar overflow-hidden">
+    <img 
+        src="{{ asset('images/BrandLogo/BrandLogo.jfif') }}" 
+        alt="Logo" 
+        class="w-full h-full object-cover"
+    >
 </div>
-  </div>
 
   <h1 class="name">{{ $ownerName }}</h1>
   <p class="tagline">Follow the journey</p>
