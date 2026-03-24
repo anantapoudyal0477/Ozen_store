@@ -19,8 +19,8 @@ class ContactController extends Controller
 
     public function StayConnected(){
         $ownerName = "Ozen Eye Wear";
-        $address = "123 Main Street, City, Country";
-        $email = "ozen@gamil.com";
+        $address = "Lagankhel, Lalitpur, Nepal";
+        $email = "Ozeneyewear@gmail.com";
         $phone = "9779744593083";
         $facebookLink = "https://www.facebook.com/profile.php?id=61587742575807&mibextid=wwXIfr";
         $instagramLink = "https://www.instagram.com/ozen_eye_wear?igsh=MTQ5Zm10aWRjazNrYQ%3D%3D";
