@@ -318,7 +318,7 @@
   <div class="avatar-wrap">
     <div class="avatar-ring"></div>
 <div class="avatar">
-    @if(file_exists(public_path('images/logo.png')))
+    @if(file_exists(public_path('Images/BrandLogo/BrandLogo.jfif')))
         <img src="{{ asset("Images/BrandLogo/BrandLogo.jfif") }}" class="w-full h-full object-contain">
     @else
         {{ strtoupper(substr($ownerName, 0, 2)) }}
