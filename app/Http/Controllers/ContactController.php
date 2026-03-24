@@ -22,7 +22,11 @@ class ContactController extends Controller
         $address = "123 Main Street, City, Country";
         $email = "ozen@gamil.com";
         $phone = "+1 (123) 456-7890";
-        return view("Viewer.Components.URL.index",compact('ownerName', 'address', 'email', 'phone'));
+        $facebookLink = "https://www.facebook.com/profile.php?id=61587742575807&mibextid=wwXIfr";
+        $instagramLink = "https://www.instagram.com/ozen_eye_wear?igsh=MTQ5Zm10aWRjazNrYQ%3D%3D";
+        $tiktokLink = "https://www.tiktok.com/@ozen_eye_wear";
+        $whatsappLink = "https://wa.me/9779744593083";
+        return view("Viewer.Components.URL.index",compact('ownerName', 'address', 'email', 'phone', 'facebookLink', 'instagramLink', 'tiktokLink', 'whatsappLink'));
     }
 
         public function submit(){}

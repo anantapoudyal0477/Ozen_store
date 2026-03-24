@@ -328,7 +328,7 @@
   <div class="links">
 
     <!-- Facebook -->
-    <a class="card facebook" href="https://www.facebook.com/profile.php?id=61587742575807&mibextid=wwXIfr" target="_blank" rel="noopener">
+    <a class="card facebook" href="{{ $facebookLink }}" target="_blank" rel="noopener">
       <div class="icon-wrap">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#1877f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -344,7 +344,7 @@
     </a>
 
     <!-- Instagram -->
-    <a class="card instagram" href="https://www.instagram.com/ozen_eye_wear?igsh=MTQ5Zm10aWRjazNrYQ%3D%3D" target="_blank" rel="noopener">
+    <a class="card instagram" href="{{ $instagramLink }}" target="_blank" rel="noopener">
       <div class="icon-wrap">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig2)" stroke-width="2"/>
@@ -369,7 +369,7 @@
     </a>
 
     <!-- TikTok -->
-    <a class="card tiktok" href="https://www.tiktok.com/@ozeneyewear2" target="_blank" rel="noopener">
+    <a class="card tiktok" href="{{ $tiktokLink }}" target="_blank" rel="noopener">
       <div class="icon-wrap">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="#ff0050" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -385,7 +385,7 @@
     </a>
 
     <!-- WhatsApp -->
-    <a class="card whatsapp" href="https://wa.me/9744593083" target="_blank" rel="noopener">
+    <a class="card whatsapp" href="{{ $whatsappLink }}" target="_blank" rel="noopener">
       <div class="icon-wrap">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="#25d366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
