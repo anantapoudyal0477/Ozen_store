@@ -38,6 +38,8 @@ class Administrator extends Authenticatable
 
     // ---------------- ATTRIBUTE CASTS ----------------
     protected $casts = [
+        'name' => 'encrypted',          // Encrypt name for privacy
+        'email' => 'encrypted',         // Encrypt email for privacy
         'password' => 'hashed',          // Laravel hashes automatically
         'last_login_at' => 'datetime',
         'locked_until' => 'datetime',

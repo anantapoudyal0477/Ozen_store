@@ -341,7 +341,7 @@
     @else
         {{ strtoupper(substr($ownerName, 0, 2)) }}
     @endif
-</div>
+</div>  
   </div>
 
   <h1 class="name">{{ $ownerName }}</h1>
